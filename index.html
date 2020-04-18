@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link
       rel="stylesheet"
@@ -13,8 +14,14 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+      <span class="navbar-brand m-auto h1">Weather Dashboard</span>
     </nav>
+    <form class="form-inline my-2 my-lg-0">
+      <textarea name="search" id="searchCity"></textarea>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </form>
     <script src="./main.js"></script>
   </body>
 </html>
