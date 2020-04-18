@@ -3,8 +3,10 @@ var cityInfo = "";
 
 $("button").on("click", function (e) {
   e.preventDefault();
+  var time = $(this).parent().attr("id");
   cityInfo = $("#searchCity").val();
   oneDayForecast(cityInfo);
+  fiveDayForecast(cityInfo);
   // console.log(cityInfo);
 });
 
@@ -15,14 +17,39 @@ function oneDayForecast(cityInfo) {
     url: queryURL,
     method: "GET",
   }).then(function (res) {
-    $("id").append();
-    // console.log(queryURL);
+    console.log(res.main.temp);
+    $(".weatherOneDiv").text("");
+    var weatherIcon = $("<img>").attr(
+      "src",
+      "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
+    );
+    $(".weatherOneDiv").append(weatherIcon);
+    var cityName = $("<h5>").text(cityInfo.toUpperCase());
+    $(".weatherOneDiv").append(cityName);
+    var temperatureP = $("<p>").text("Temp " + res.main.temp + " F");
+    $(".weatherOneDiv").append(temperatureP);
+
+    // console.log(res);
   });
   var currentTime = moment().format("MMM Do YY");
   var displayTime = document.getElementById("currentDay");
-  displayTime.textContent = time;
+  // displayTime.textContent = time;
+  // console.log(res);
 }
 
+function fiveDayForecast(cityInfo) {
+  var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}`;
+  // console.log(query5DayURL);
+  $.ajax({
+    url: query5DayURL,
+    method: "GET",
+  }).then(function (res) {
+    // console.log(res.list);
+    for (var i = 7; i < 40; i += 8) {
+      console.log(res.list[i]);
+    }
+  });
+}
 // var openWeather = ""
 
 // var movie = "Mr. Nobody";
