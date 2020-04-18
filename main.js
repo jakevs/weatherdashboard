@@ -38,7 +38,7 @@ function oneDayForecast(cityInfo) {
 }
 
 function fiveDayForecast(cityInfo) {
-  var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}`;
+  var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
   // console.log(query5DayURL);
   $.ajax({
     url: query5DayURL,
@@ -47,6 +47,11 @@ function fiveDayForecast(cityInfo) {
     // console.log(res.list);
     for (var i = 7; i < 40; i += 8) {
       console.log(res.list[i]);
+
+      var dateElement = $("<p>").text(
+        moment(res.list[i].dt_txt).format("MM/DD/YYYY")
+      );
+      $(".fiveDayList").append(dateElement);
     }
   });
 }
