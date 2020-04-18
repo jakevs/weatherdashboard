@@ -18,6 +18,9 @@ function oneDayForecast(cityInfo) {
     $("id").append();
     // console.log(queryURL);
   });
+  var currentTime = moment().format("MMM Do YY");
+  var displayTime = document.getElementById("currentDay");
+  displayTime.textContent = time;
 }
 
 // var openWeather = ""
