@@ -10,6 +10,7 @@ $("button").on("click", function (e) {
   // console.log(cityInfo);
 });
 
+//This function puts the current days forecast on the screen
 function oneDayForecast(cityInfo) {
   console.log(cityInfo);
   var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityInfo},us&appid=${api_key}&units=imperial`;
@@ -31,12 +32,13 @@ function oneDayForecast(cityInfo) {
 
     // console.log(res);
   });
-  var currentTime = moment().format("MMM Do YY");
+  var currentTime = moment().format("dddd MMM Do YY");
   var displayTime = document.getElementById("currentDay");
   // displayTime.textContent = time;
   // console.log(res);
 }
 
+//This function puts the 5 day forecast on the screen
 function fiveDayForecast(cityInfo) {
   var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
   // console.log(query5DayURL);
@@ -49,7 +51,7 @@ function fiveDayForecast(cityInfo) {
       console.log(res.list[i]);
 
       var dateElement = $("<p>").text(
-        moment(res.list[i].dt_txt).format("MM/DD/YYYY")
+        moment(res.list[i].dt_txt).format("MMM Do YY")
       );
       $(".fiveDayList").append(dateElement);
     }

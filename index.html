@@ -13,29 +13,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Nav Bar Here -->
     <nav class="navbar navbar-dark bg-dark">
       <span class="navbar-brand m-auto h1">Weather Dashboard</span>
     </nav>
-    <form class="form-inline my-2 my-lg-0">
-      <textarea name="search" id="searchCity"></textarea>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
-    <article class="card" style="width: 18rem;">
-      <!-- <img src="..." class="card-img-top" alt="..." /> -->
-      <div class="card-body weatherOneDiv">
-        <h5 id="currentDay" class="card-title">Weather for current day here</h5>
-        <p class="card-text">
-          City's Information Here
-        </p>
+    <!-- Main Content Here -->
+    <div class="container-fluid">
+      <div class="row">
+        <form class="form-inline my-2 my-lg-0 col-md-2">
+          <textarea name="search" id="searchCity"></textarea>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+
+        <article class="card col-md-8" style="width: 18rem;">
+          <!-- <img src="..." class="card-img-top" alt="..." /> -->
+          <div class="card-body weatherOneDiv">
+            <h5 id="currentDay" class="card-title">
+              Weather for current day here
+            </h5>
+            <p class="card-text">
+              City's Information Here
+            </p>
+          </div>
+          <div class="fiveDayList"></div>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </article>
       </div>
-      <div class="fiveDayList"></div>
-      <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </article>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>
