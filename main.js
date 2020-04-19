@@ -27,7 +27,9 @@ function oneDayForecast(cityInfo) {
     $(".weatherOneDiv").append(weatherIcon);
     var cityName = $("<h5>").text(cityInfo.toUpperCase());
     $(".weatherOneDiv").append(cityName);
-    var temperatureP = $("<p>").text("Temp " + res.main.temp + " F");
+    var temperatureP = $("<p>").text(
+      "Temp " + Math.round(res.main.temp) + " F"
+    );
     $(".weatherOneDiv").append(temperatureP);
 
     // console.log(res);
