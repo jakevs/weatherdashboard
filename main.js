@@ -25,17 +25,17 @@ function oneDayForecast(cityInfo) {
       "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
     );
     $(".weatherOneDiv").append(weatherIcon);
-    var cityName = $("<h5>").text(cityInfo.toUpperCase());
+    var cityName = $("<h2>").text(cityInfo.toUpperCase());
     $(".weatherOneDiv").append(cityName);
-    var temperatureP = $("<p>").text(
+    var temperatureP = $("<h5>").text(
       "Temperature: " + Math.round(res.main.temp) + " F"
     );
     $(".weatherOneDiv").append(temperatureP);
-    var humid = $("<p>").text("Humidity: " + res.main.humidity + "%");
+    var humid = $("<h5>").text("Humidity: " + res.main.humidity + "%");
     $(".weatherOneDiv").append(humid);
-    var wind = $("<p>").text("Wind Speed: " + res.wind.speed);
+    var wind = $("<h5>").text("Wind Speed: " + res.wind.speed);
     $(".weatherOneDiv").append(wind);
-    var uvInd = $("<p>").text("UV Index: " + res.coord.lat, res.coord.lon);
+    var uvInd = $("<h5>").text("UV Index: " + res.coord.lat, res.coord.lon);
     $(".weatherOneDiv").append(uvInd);
   });
 
@@ -72,7 +72,7 @@ function fiveDayForecast(cityInfo) {
     for (var i = 7; i < 40; i += 8) {
       console.log(res.list[i]);
 
-      var dateElement = $("<p>").text(
+      var dateElement = $("<h6>").text(
         moment(res.list[i].dt_txt).format("MMM Do YY")
       );
       $(".fiveDayList").append(dateElement);
@@ -83,8 +83,12 @@ function fiveDayForecast(cityInfo) {
           ".png"
       );
       dateElement.append(fiveDayIcon);
+      var tempForecast = $("<p>").text(
+        "Temperature: " + Math.round(res.list[i].main.temp) + "F"
+      );
+      $(".fiveDayList").append(tempForecast);
       var humidForecast = $("<p>").text(
-        "Humidity: " + response.list[i].main.humidity + "%"
+        "Humidity: " + res.list[i].main.humidity + "%"
       );
       $(".fiveDayList").append(humidForecast);
     }
