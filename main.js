@@ -3,7 +3,7 @@ var cityInfo = "";
 
 $("button").on("click", function (e) {
   e.preventDefault();
-  var time = $(this).parent().attr("id");
+  // var time = $(this).parent().attr("id");
   cityInfo = $("#searchCity").val();
   oneDayForecast(cityInfo);
   fiveDayForecast(cityInfo);
@@ -31,13 +31,29 @@ function oneDayForecast(cityInfo) {
       "Temperature: " + Math.round(res.main.temp) + " F"
     );
     $(".weatherOneDiv").append(temperatureP);
-    var humid = $("<p>").text("Humidity: " + res.main.humidity);
+    var humid = $("<p>").text("Humidity: " + res.main.humidity + "%");
     $(".weatherOneDiv").append(humid);
     var wind = $("<p>").text("Wind Speed: " + res.wind.speed);
     $(".weatherOneDiv").append(wind);
-
-    // console.log(res);
+    var uvInd = $("<p>").text("UV Index: " + res.coord.lat, res.coord.lon);
+    $(".weatherOneDiv").append(uvInd);
   });
+
+  // function uvIndex(lat, lon) {
+  //   var uvUrl = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`;
+  //   $.ajax({
+  //     url: uvUrl,
+  //     method: "GET",
+  //   }).then(function (response) {
+  //     var uvDiv = $("<div>").text("UV index: ");
+  //     $(".weatherOneDiv").append(uvDiv);
+  //     var cityUv = $("<span>").text(response.value).attr({
+  //       id: "uvIndex",
+  //     });
+  //     $(".weatherOneDiv").append(cityUv);
+  //   });
+  // }
+
   var currentTime = moment().format("dddd MMM Do YY");
   var displayTime = document.getElementById("currentDay");
   // displayTime.textContent = time;
@@ -67,6 +83,10 @@ function fiveDayForecast(cityInfo) {
           ".png"
       );
       dateElement.append(fiveDayIcon);
+      var humidForecast = $("<p>").text(
+        "Humidity: " + response.list[i].main.humidity + "%"
+      );
+      $(".fiveDayList").append(humidForecast);
     }
   });
 }
