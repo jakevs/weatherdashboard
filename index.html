@@ -20,34 +20,39 @@
     <!-- Main Content Here -->
     <div class="container-fluid">
       <div class="row">
+        <div class="col-md-1"></div>
+
         <form class="form-inline my-2 my-lg-0 col-md-2">
           <textarea name="search" id="searchCity"></textarea>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <button class="btn btn-dark" type="submit">
             Search
           </button>
         </form>
-        <div class="col-md-1"></div>
         <article
-          class="card col-md-8"
+          class="card col-md-6"
           style="width: 18rem;"
           class="mx-auto"
           style="width: 200px;"
         >
           <!-- <img src="..." class="card-img-top" alt="..." /> -->
           <div class="card-body weatherOneDiv">
-            <h5 id="currentDay" class="card-title">
-              Weather for current day here
-            </h5>
-            <p class="card-text">
+            <h1 id="currentDay" class="card-title">
+              <bold
+                >Type a city name in the search bar to get the current weather
+                and forecast!</bold
+              >
+            </h1>
+            <!-- <p class="card-text">
               City's Information Here
-            </p>
+            </p> -->
           </div>
           <div class="fiveDayList"></div>
-          <div class="card-body">
+          <!-- <div class="card-body">
             <a href="#" class="card-link">Card link</a>
             <a href="#" class="card-link">Another link</a>
-          </div>
+          </div> -->
         </article>
+        <div class="col-md-3"></div>
       </div>
     </div>
     <script src="./main.js"></script>

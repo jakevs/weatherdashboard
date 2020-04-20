@@ -39,21 +39,6 @@ function oneDayForecast(cityInfo) {
     $(".weatherOneDiv").append(uvInd);
   });
 
-  // function uvIndex(lat, lon) {
-  //   var uvUrl = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`;
-  //   $.ajax({
-  //     url: uvUrl,
-  //     method: "GET",
-  //   }).then(function (response) {
-  //     var uvDiv = $("<div>").text("UV index: ");
-  //     $(".weatherOneDiv").append(uvDiv);
-  //     var cityUv = $("<span>").text(response.value).attr({
-  //       id: "uvIndex",
-  //     });
-  //     $(".weatherOneDiv").append(cityUv);
-  //   });
-  // }
-
   var currentTime = moment().format("dddd MMM Do YY");
   var displayTime = document.getElementById("currentDay");
   // displayTime.textContent = time;
@@ -94,10 +79,6 @@ function fiveDayForecast(cityInfo) {
     }
   });
 }
-// var openWeather = ""
-
-// var movie = "Mr. Nobody";
-//     var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
 // $.ajax({
 //   url: queryURL,
@@ -106,16 +87,19 @@ function fiveDayForecast(cityInfo) {
 //   // Create a new table row element
 //   var tRow = $("<tr>");
 
-//   // Methods run on jQuery selectors return the selector they we run on
-//   // This is why we can create and save a reference to a td in the same statement we update its text
-//   var titleTd = $("<td>").text(response.Title);
-//   var yearTd = $("<td>").text(response.Year);
-//   var actorsTd = $("<td>").text(response.Actors);
-
-//   // Append the newly created table data to the table row
-//   tRow.append(titleTd, yearTd, actorsTd);
-//   // Append the table row to the table body
-//   $("tbody").append(tRow);
-// });
-
 // var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${locationCity},us&appid=${APIKey}&units=metric`;
+
+// function uvIndex(lat, lon) {
+//   var uvUrl = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`;
+//   $.ajax({
+//     url: uvUrl,
+//     method: "GET",
+//   }).then(function (response) {
+//     var uvDiv = $("<div>").text("UV index: ");
+//     $(".weatherOneDiv").append(uvDiv);
+//     var cityUv = $("<span>").text(response.value).attr({
+//       id: "uvIndex",
+//     });
+//     $(".weatherOneDiv").append(cityUv);
+//   });
+// }
