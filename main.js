@@ -86,20 +86,3 @@ function fiveDayForecast(cityInfo) {
 // }).then(function(response) {
 //   // Create a new table row element
 //   var tRow = $("<tr>");
-
-// var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${locationCity},us&appid=${APIKey}&units=metric`;
-
-// function uvIndex(lat, lon) {
-//   var uvUrl = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`;
-//   $.ajax({
-//     url: uvUrl,
-//     method: "GET",
-//   }).then(function (response) {
-//     var uvDiv = $("<div>").text("UV index: ");
-//     $(".weatherOneDiv").append(uvDiv);
-//     var cityUv = $("<span>").text(response.value).attr({
-//       id: "uvIndex",
-//     });
-//     $(".weatherOneDiv").append(cityUv);
-//   });
-// }
