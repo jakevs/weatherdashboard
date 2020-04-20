@@ -28,9 +28,13 @@ function oneDayForecast(cityInfo) {
     var cityName = $("<h5>").text(cityInfo.toUpperCase());
     $(".weatherOneDiv").append(cityName);
     var temperatureP = $("<p>").text(
-      "Temp " + Math.round(res.main.temp) + " F"
+      "Temperature: " + Math.round(res.main.temp) + " F"
     );
     $(".weatherOneDiv").append(temperatureP);
+    var humid = $("<p>").text("Humidity: " + res.main.humidity);
+    $(".weatherOneDiv").append(humid);
+    var wind = $("<p>").text("Wind Speed: " + res.wind.speed);
+    $(".weatherOneDiv").append(wind);
 
     // console.log(res);
   });
@@ -56,6 +60,13 @@ function fiveDayForecast(cityInfo) {
         moment(res.list[i].dt_txt).format("MMM Do YY")
       );
       $(".fiveDayList").append(dateElement);
+      var fiveDayIcon = $("<img>").attr(
+        "src",
+        "https://openweathermap.org/img/w/" +
+          res.list[i].weather[0].icon +
+          ".png"
+      );
+      dateElement.append(fiveDayIcon);
     }
   });
 }
