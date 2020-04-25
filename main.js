@@ -1,5 +1,6 @@
 var api_key = "f98fbdda7a8581faf516496b935f66e0";
 var cityInfo = "";
+
 $(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
     e.preventDefault();
@@ -49,6 +50,11 @@ $(document).ready(function () {
   function fiveDayForecast(cityInfo) {
     var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
     // console.log(query5DayURL);
+    var forecastHeader = $("<h2>").text("5-Day Forecast: ").attr({
+      class: "w-100",
+      id: "fiveDayHead",
+    });
+    $("#fiveHead").append(forecastHeader);
     $.ajax({
       url: query5DayURL,
       method: "GET",
@@ -58,7 +64,7 @@ $(document).ready(function () {
         console.log(res.list[i]);
 
         var dateElement = $("<h6>").text(
-          moment(res.list[i].dt_txt).format("MMM Do YY")
+          moment(res.list[i].dt_txt).format("dddd")
         );
         $(".fiveDayList").append(dateElement);
         var fiveDayIcon = $("<img>").attr(
@@ -167,9 +173,3 @@ $(document).ready(function () {
     });
   });
 });
-// $.ajax({
-//   url: queryURL,
-//   method: "GET"
-// }).then(function(response) {
-//   // Create a new table row element
-//   var tRow = $("<tr>");
