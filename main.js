@@ -1,14 +1,35 @@
 var api_key = "f98fbdda7a8581faf516496b935f66e0";
 var cityInfo = "";
+const SEARCH_HISTORY_KEY = "searchHistory";
+
+/**
+ * adds query to search history if not present. This function modifies local storage.
+ * @param {string} query
+ */
+function updateSearchHistory(query) {
+  var rawSearchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
+  var searchHistory = JSON.parse(rawSearchHistory);
+  if (!searchHistory) {
+    searchHistory = [];
+  }
+  // if search history does not include query
+  if (!searchHistory.includes(query)) {
+    //add query to search history array
+    searchHistory.push(query);
+    //store history in local storage
+    localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
+  }
+  return searchHistory;
+}
 
 $(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
     e.preventDefault();
-    // var time = $(this).parent().attr("id");
     cityInfo = $("#searchCity").val();
+    var searchHistory = updateSearchHistory(cityInfo);
+    // localStorage.getItem("searchHistory", cityInfo);
     oneDayForecast(cityInfo);
     fiveDayForecast(cityInfo);
-    // console.log(cityInfo);
   });
 
   //This function puts the current days forecast on the screen
