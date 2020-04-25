@@ -1,7 +1,7 @@
 var api_key = "f98fbdda7a8581faf516496b935f66e0";
 var cityInfo = "";
 
-$("button").on("click", function (e) {
+$(".firstSearch").on("click", function (e) {
   e.preventDefault();
   // var time = $(this).parent().attr("id");
   cityInfo = $("#searchCity").val();
@@ -80,6 +80,92 @@ function fiveDayForecast(cityInfo) {
   });
 }
 
+$("#kc").on("click", function (e) {
+  e.preventDefault();
+  var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=kansas&city,us&appid=${api_key}&units=imperial`;
+  $.ajax({
+    url: kcURL,
+    method: "GET",
+  }).then(function (res) {
+    console.log(res.main.temp);
+    $(".weatherOneDiv").text("");
+    var weatherIcon = $("<img>").attr(
+      "src",
+      "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
+    );
+    $(".weatherOneDiv").append(weatherIcon);
+    var cityName = $("<h2>").text("Kansas City".toUpperCase());
+    $(".weatherOneDiv").append(cityName);
+    var temperatureP = $("<h5>").text(
+      "Temperature: " + Math.round(res.main.temp) + " F"
+    );
+    $(".weatherOneDiv").append(temperatureP);
+    var humid = $("<h5>").text("Humidity: " + res.main.humidity + "%");
+    $(".weatherOneDiv").append(humid);
+    var wind = $("<h5>").text("Wind Speed: " + res.wind.speed);
+    $(".weatherOneDiv").append(wind);
+    var uvInd = $("<h5>").text("UV Index: " + res.coord.lat, res.coord.lon);
+    $(".weatherOneDiv").append(uvInd);
+  });
+});
+
+$("#den").on("click", function (e) {
+  e.preventDefault();
+  var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=denver,us&appid=${api_key}&units=imperial`;
+  $.ajax({
+    url: kcURL,
+    method: "GET",
+  }).then(function (res) {
+    console.log(res.main.temp);
+    $(".weatherOneDiv").text("");
+    var weatherIcon = $("<img>").attr(
+      "src",
+      "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
+    );
+    $(".weatherOneDiv").append(weatherIcon);
+    var cityName = $("<h2>").text("Denver".toUpperCase());
+    $(".weatherOneDiv").append(cityName);
+    var temperatureP = $("<h5>").text(
+      "Temperature: " + Math.round(res.main.temp) + " F"
+    );
+    $(".weatherOneDiv").append(temperatureP);
+    var humid = $("<h5>").text("Humidity: " + res.main.humidity + "%");
+    $(".weatherOneDiv").append(humid);
+    var wind = $("<h5>").text("Wind Speed: " + res.wind.speed);
+    $(".weatherOneDiv").append(wind);
+    var uvInd = $("<h5>").text("UV Index: " + res.coord.lat, res.coord.lon);
+    $(".weatherOneDiv").append(uvInd);
+  });
+});
+
+$("#sd").on("click", function (e) {
+  e.preventDefault();
+  var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=san&diego,us&appid=${api_key}&units=imperial`;
+  $.ajax({
+    url: kcURL,
+    method: "GET",
+  }).then(function (res) {
+    console.log(res.main.temp);
+    $(".weatherOneDiv").text("");
+    var weatherIcon = $("<img>").attr(
+      "src",
+      "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png"
+    );
+    $(".weatherOneDiv").append(weatherIcon);
+    var cityName = $("<h2>").text("San Diego".toUpperCase());
+    $(".weatherOneDiv").append(cityName);
+    var temperatureP = $("<h5>").text(
+      "Temperature: " + Math.round(res.main.temp) + " F"
+    );
+    $(".weatherOneDiv").append(temperatureP);
+    var humid = $("<h5>").text("Humidity: " + res.main.humidity + "%");
+    $(".weatherOneDiv").append(humid);
+    var wind = $("<h5>").text("Wind Speed: " + res.wind.speed);
+    $(".weatherOneDiv").append(wind);
+    var uvInd = $("<h5>").text("UV Index: " + res.coord.lat, res.coord.lon);
+    $(".weatherOneDiv").append(uvInd);
+  });
+});
 // $.ajax({
 //   url: queryURL,
 //   method: "GET"
