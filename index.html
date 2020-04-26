@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Forecast!</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,13 +22,25 @@
         <div class="col-md-1"></div>
         <!--possibly add new class, may be an inheritance issue. change to inline block-->
         <form class="col-md-2">
-          <textarea name="search" id="searchCity"></textarea>
+          <form autocomplete="off" action="/action_page.php">
+            <div class="autocomplete" style="width: 300px;">
+              <input
+                id="myInput"
+                class="citySearch"
+                type="text"
+                name="myCountry"
+                placeholder="City"
+              />
+            </div>
+            <input type="submit" class="firstSearch" />
+          </form>
+          <!-- <textarea name="search" id="searchCity"></textarea>
           <button class="btn btn-dark firstSearch">
             Search
-          </button>
+          </button> -->
 
           <!-- Search Results Here -->
-          <div class="btn-group-vertical">
+          <div class="btn-group-vertical history">
             <button type="button" id="kc" class="btn btn-secondary">
               Kansas City
             </button>
@@ -68,6 +79,8 @@
         <div class="col-md-3"></div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
