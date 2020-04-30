@@ -146,6 +146,7 @@ renderPreviousSearch(previousSearches);
 $(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
     e.preventDefault();
+    cityInfo = $("#searchCity").val();
 
     cityInfo = $(".citySearch").val();
     autocomplete(document.getElementById("myInput"), previousSearches);
@@ -196,18 +197,15 @@ $(document).ready(function () {
       var uvInd = $("<h5>").text("UV Index: " + res.coord.lat, res.coord.lon);
       $(".weatherOneDiv").append(uvInd);
     });
-
     var currentTime = moment().format("dddd MMM Do YY");
     var displayTime = document.getElementById("currentDay");
     // displayTime.textContent = time;
     // console.log(res);
   }
-
   //This function puts the 5 day forecast on the screen
   function fiveDayForecast(cityInfo) {
     var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
     // console.log(query5DayURL);
-    $(".fiveDayList").html("");
     var forecastHeader = $("<h2>").text("5-Day Forecast: ").attr({
       class: "w-100",
       id: "fiveDayHead",
@@ -220,7 +218,6 @@ $(document).ready(function () {
       // console.log(res.list);
       for (var i = 7; i < 40; i += 8) {
         console.log(res.list[i]);
-
         var dateElement = $("<h6>").text(
           moment(res.list[i].dt_txt).format("dddd")
         );
@@ -243,7 +240,6 @@ $(document).ready(function () {
       }
     });
   }
-
   $("#kc").on("click", function (e) {
     e.preventDefault();
     var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=kansas&city,us&appid=${api_key}&units=imperial`;
@@ -272,7 +268,6 @@ $(document).ready(function () {
       $(".weatherOneDiv").append(uvInd);
     });
   });
-
   $("#den").on("click", function (e) {
     e.preventDefault();
     var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=denver,us&appid=${api_key}&units=imperial`;
@@ -301,7 +296,6 @@ $(document).ready(function () {
       $(".weatherOneDiv").append(uvInd);
     });
   });
-
   $("#sd").on("click", function (e) {
     e.preventDefault();
     var kcURL = `https://api.openweathermap.org/data/2.5/weather?q=san&diego,us&appid=${api_key}&units=imperial`;

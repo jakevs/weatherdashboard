@@ -10,6 +10,21 @@ body {
   margin: 10px;
   /* padding: 10px; */
 }
+#den {
+  font-size: x-small;
+}
+
+#kc {
+  font-size: x-small;
+}
+
+#sd {
+  font-size: x-small;
+}
+
+.historySearch {
+  font-size: x-small;
+}
 
 * {
   box-sizing: border-box;
