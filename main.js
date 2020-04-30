@@ -129,19 +129,19 @@ function updateSearchHistory(query) {
   return searchHistory;
 }
 
-// function renderPreviousSearch(previousSearches) {
-//   for (var i = 0; i < previousSearches.length; i++) {
-//     if (previousSearches[i] === "") {
-//       return;
-//     }
-//     var previousButton = $("<button>");
-//     previousButton.attr("class", "btn btn-secondary historySearch");
-//     previousButton.text(previousSearches[i].toUpperCase());
-//     $(".history").append(previousButton);
-//   }
-// }
+function renderPreviousSearch(previousSearches) {
+  for (var i = 0; i < previousSearches.length; i++) {
+    if (previousSearches[i] === "") {
+      return;
+    }
+    var previousButton = $("<button>");
+    previousButton.attr("class", "btn btn-secondary historySearch");
+    previousButton.text(previousSearches[i].toUpperCase());
+    $(".history").append(previousButton);
+  }
+}
 
-// renderPreviousSearch(previousSearches);
+renderPreviousSearch(previousSearches);
 
 $(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
@@ -207,6 +207,7 @@ $(document).ready(function () {
   function fiveDayForecast(cityInfo) {
     var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
     // console.log(query5DayURL);
+    $(".fiveDayList").html("");
     var forecastHeader = $("<h2>").text("5-Day Forecast: ").attr({
       class: "w-100",
       id: "fiveDayHead",
