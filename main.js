@@ -130,9 +130,9 @@ function updateSearchHistory(query) {
 }
 
 $(document).ready(function (e) {
-  e.preventDefault();
-
   function renderPreviousSearch(previousSearches) {
+    e.preventDefault();
+
     for (var i = 0; i < previousSearches.length; i++) {
       if (previousSearches[i] === "") {
         return;
