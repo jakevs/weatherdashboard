@@ -112,24 +112,25 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
-$(document).ready(function () {
-  function updateSearchHistory(query) {
-    var rawSearchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
-    var searchHistory = JSON.parse(rawSearchHistory);
-    if (!searchHistory) {
-      searchHistory = [];
-    }
-    // if search history does not include query
-    if (!searchHistory.includes(query)) {
-      //add query to search history array
-      searchHistory.push(query);
-      //store history in local storage
-      localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
-    }
-    return searchHistory;
-  }
 
-  function renderPreviousSearch(previousSearches) {
+function updateSearchHistory(query) {
+  var rawSearchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
+  var searchHistory = JSON.parse(rawSearchHistory);
+  if (!searchHistory) {
+    searchHistory = [];
+  }
+  // if search history does not include query
+  if (!searchHistory.includes(query)) {
+    //add query to search history array
+    searchHistory.push(query);
+    //store history in local storage
+    localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
+  }
+  return searchHistory;
+}
+
+function renderPreviousSearch(previousSearches) {
+  if (previousSearches) {
     for (var i = 0; i < previousSearches.length; i++) {
       if (previousSearches[i] === "") {
         return;
@@ -140,8 +141,11 @@ $(document).ready(function () {
       $(".history").append(previousButton);
     }
   }
-  renderPreviousSearch(previousSearches);
+}
 
+renderPreviousSearch(previousSearches);
+
+$(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
     e.preventDefault();
     cityInfo = $("#searchCity").val();
