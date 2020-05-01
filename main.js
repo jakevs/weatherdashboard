@@ -130,6 +130,7 @@ function updateSearchHistory(query) {
 }
 
 function renderPreviousSearch(previousSearches) {
+  previousSearches.preventDefault();
   for (var i = 0; i < previousSearches.length; i++) {
     if (previousSearches[i] === "") {
       return;
