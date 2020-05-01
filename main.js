@@ -129,18 +129,21 @@ function updateSearchHistory(query) {
   return searchHistory;
 }
 
-function renderPreviousSearch(previousSearches) {
-  previousSearches.preventDefault();
-  for (var i = 0; i < previousSearches.length; i++) {
-    if (previousSearches[i] === "") {
-      return;
+$(document).ready(function (e) {
+  e.preventDefault();
+
+  function renderPreviousSearch(previousSearches) {
+    for (var i = 0; i < previousSearches.length; i++) {
+      if (previousSearches[i] === "") {
+        return;
+      }
+      var previousButton = $("<button>");
+      previousButton.attr("class", "btn btn-secondary historySearch");
+      previousButton.text(previousSearches[i].toUpperCase());
+      $(".history").append(previousButton);
     }
-    var previousButton = $("<button>");
-    previousButton.attr("class", "btn btn-secondary historySearch");
-    previousButton.text(previousSearches[i].toUpperCase());
-    $(".history").append(previousButton);
   }
-}
+});
 
 renderPreviousSearch(previousSearches);
 
