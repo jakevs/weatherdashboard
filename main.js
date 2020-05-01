@@ -112,27 +112,24 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
-
-function updateSearchHistory(query) {
-  var rawSearchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
-  var searchHistory = JSON.parse(rawSearchHistory);
-  if (!searchHistory) {
-    searchHistory = [];
+$(document).ready(function () {
+  function updateSearchHistory(query) {
+    var rawSearchHistory = localStorage.getItem(SEARCH_HISTORY_KEY);
+    var searchHistory = JSON.parse(rawSearchHistory);
+    if (!searchHistory) {
+      searchHistory = [];
+    }
+    // if search history does not include query
+    if (!searchHistory.includes(query)) {
+      //add query to search history array
+      searchHistory.push(query);
+      //store history in local storage
+      localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
+    }
+    return searchHistory;
   }
-  // if search history does not include query
-  if (!searchHistory.includes(query)) {
-    //add query to search history array
-    searchHistory.push(query);
-    //store history in local storage
-    localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
-  }
-  return searchHistory;
-}
 
-$(document).ready(function (e) {
   function renderPreviousSearch(previousSearches) {
-    e.preventDefault();
-
     for (var i = 0; i < previousSearches.length; i++) {
       if (previousSearches[i] === "") {
         return;
@@ -144,9 +141,7 @@ $(document).ready(function (e) {
     }
   }
   renderPreviousSearch(previousSearches);
-});
 
-$(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
     e.preventDefault();
     cityInfo = $("#searchCity").val();
@@ -209,6 +204,7 @@ $(document).ready(function () {
   function fiveDayForecast(cityInfo) {
     var query5DayURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInfo},us&appid=${api_key}&units=imperial`;
     // console.log(query5DayURL);
+    $(".fiveDayList").html("");
     var forecastHeader = $("<h2>").text("5-Day Forecast: ").attr({
       class: "w-100",
       id: "fiveDayHead",
