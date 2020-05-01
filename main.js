@@ -143,9 +143,8 @@ $(document).ready(function (e) {
       $(".history").append(previousButton);
     }
   }
+  renderPreviousSearch(previousSearches);
 });
-
-renderPreviousSearch(previousSearches);
 
 $(document).ready(function () {
   $(".firstSearch").on("click", function (e) {
